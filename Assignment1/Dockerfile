@@ -1,6 +1,6 @@
 FROM nfcore/base:1.14
 LABEL authors="Kevin Ryan" \
-      description="Docker container containing fastqc"
+      description="Docker container replicating Zhao et al paper"
 
 RUN apt-get update; apt-get clean all; apt-get install --yes unzip
 
