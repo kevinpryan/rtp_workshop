@@ -1,0 +1,9 @@
+name: zhao
+channels:
+ - bioconda
+ - cbp44
+dependencies:
+ - tophat=2.1.1
+ - cufflinks=2.2.1
+ - cbp44::cpc2=2.0b 
+
