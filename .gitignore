@@ -4,3 +4,5 @@ work/
 fastqc/
 .nextflow.*
 .nextflow/
+multiqc/
+foo.nf
