@@ -1,0 +1,13 @@
+{
+	"n_targets": 5171,
+	"n_bootstraps": 0,
+	"n_processed": 2907306,
+	"n_pseudoaligned": 2608545,
+	"n_unique": 1769417,
+	"p_pseudoaligned": 89.7,
+	"p_unique": 60.9,
+	"kallisto_version": "0.46.2",
+	"index_version": 10,
+	"start_time": "Wed Dec 15 11:23:01 2021",
+	"call": "kallisto quant -i chrI.idx -o /home/kevin/rtp_workshop/ /home/kevin/rtp_workshop/test-datasets/fastq/N2_rep1_1.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/N2_rep1_2.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/N2_rep2_1.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/N2_rep2_2.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/N2_rep3_1.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/N2_rep3_2.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/fust1_rep1_1.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/fust1_rep1_2.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/fust1_rep2_1.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/fust1_rep2_2.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/fust1_rep3_1.fastq.gz /home/kevin/rtp_workshop/test-datasets/fastq/fust1_rep3_2.fastq.gz"
+}

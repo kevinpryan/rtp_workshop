@@ -6,3 +6,8 @@ fastqc/
 .nextflow/
 multiqc/
 foo.nf
+index/
+quality_control/
+quantification/
+reference/
+dummy_files/
