@@ -45,7 +45,9 @@ ch_gtf = Channel.value(file(params.gtf))
 */
 
 process FASTQC{
-    publishDir "${params.outdir}/quality_control/fastqc", mode: 'copy'
+    tag "{base}"
+    publishDir "${params.outdir}/quality_control/fastqc", mode: 'copy',
+        saveAs: { params.save_qc_intermediates ? "fastqc/${it}" : null }
 
     input:
     tuple val(base), file(reads) from ch_qc_reads
@@ -75,7 +77,11 @@ process FASTQC{
 */
 
 process TX{
-    publishDir "${params.outdir}/reference", mode: 'copy'
+    publishDir "${params.outdir}/reference", mode: 'copy',
+        saveAs: { params.save_transcriptome ? "reference/transcriptome/${it}" : null }
+
+    when:
+        !params.transcriptome && params.fasta
 
     input:
     file(fasta) from ch_fasta
@@ -89,6 +95,8 @@ process TX{
     gffread -F -w "${fasta.baseName}.tx.fa" -g $fasta $gtf
     """
 }
+
+ch_transcriptome = params.transcriptome ? Channel.value(file(params.transcriptome)) : transcriptome_created
 
 /*
 =================================================================
@@ -107,7 +115,7 @@ process INDEX{
     publishDir "${params.outdir}/index", mode: 'copy'
 
     input:
-    file(transcriptome) from transcriptome_created
+    file(transcriptome) from ch_transcriptome
 
     output:
     file("${transcriptome.baseName}.idx") into index_created
@@ -141,11 +149,11 @@ process KALLISTO_QUANT{
     tuple val(base), file(reads) from ch_raw_reads
 
     output:
-    file("*") into kallisto_logs
-
+    //tuple val(base), file("${base}.kallisto.log") into kallisto_out not necessary
+    file("${base}.kallisto.log") into kallisto_logs
     script:
     """
-    kallisto quant -i  $index -o ${base} $reads
+    kallisto quant -i  $index -o ${base} $reads &> ${base}.kallisto.log
     """
 
 }
