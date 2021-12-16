@@ -112,7 +112,11 @@ ch_transcriptome = params.transcriptome ? Channel.value(file(params.transcriptom
 */
 
 process INDEX{
-    publishDir "${params.outdir}/outputs/index", mode: 'copy'
+    publishDir "${params.outdir}/outputs/index", mode: 'copy',
+        saveAs: { params.save_index ? "outputs/reference/index/${it}" : null }
+
+    when:
+        !params.kallisto_index && params.fasta
 
     input:
     file(transcriptome) from ch_transcriptome
@@ -125,6 +129,9 @@ process INDEX{
     kallisto index -i "${transcriptome.baseName}.idx" $transcriptome
     """
 }
+
+ch_index = params.kallisto_index ? Channel.value(file(params.kallisto_index)) : index_created
+
 
 /*
 =============================================================
