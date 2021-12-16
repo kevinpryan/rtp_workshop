@@ -12,8 +12,9 @@ This also implements continuous implementation to test `main.nf` using a minimal
 
 To run:
 
-`nextflow pull kevinpryan/rtp_workshop`
-
-`nextflow run -r dev kevinpryan/rtp_workshop`
+```
+nextflow pull kevinpryan/rtp_workshop
+nextflow run -r dev kevinpryan/rtp_workshop
+```
 
 
